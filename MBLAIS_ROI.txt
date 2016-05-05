@@ -35,32 +35,3 @@ cors <- cor(cordata, method = "pearson")
 #write.csv(cors, "C:\\Users\\Michael\\Documents\\MSPA\\PREDICT 498 - Capstone\\Assignments\\cors.csv")
 
 #write.csv(cleandata, "C:\\Users\\Michael\\Documents\\MSPA\\PREDICT 498 - Capstone\\Assignments\\cleandata_roi.csv")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
