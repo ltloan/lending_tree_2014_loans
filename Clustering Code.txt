@@ -1,0 +1,66 @@
+setwd("~/MSPA/PREDICT 498 - Capstone/Assignments")
+
+cleandata <- read.csv("~/MSPA/PREDICT 498 - Capstone/Assignments/cleandata.csv")
+View(cleandata)
+
+require(Hmisc)
+require(cluster)
+
+cleandata <- cleandata[c(-1)]
+
+id <- cleandata[c(1,2)]
+
+cleandata <- cleandata[c(-1, -2)]
+
+cleandata$term <- ((cleandata$term60*60)+(cleandata$term36*36))
+cleandata$termyears <- (cleandata$term/12)
+
+#funded to date return on investment since loan inception
+cleandata$ftdROI <- ((cleandata$total_pymnt-cleandata$total_rec_prncp)/cleandata$total_rec_prncp)
+
+#max return on investment (as percentage)
+cleandata$pctROI <- ((cleandata$installment*cleandata$term)-(cleandata$funded_amnt))/cleandata$funded_amnt
+
+#max return on investment (maximum if borrower makes minimum installment for the full term of the loan)
+cleandata$maxROI <- cleandata$pctROI*cleandata$funded_amnt
+
+df1 <- cleandata
+df1 <- df1[c(-102)]
+df1 <- scale(df1)
+
+cordata <- cleandata[c(-102)]
+
+cors <- cor(cordata, method = "pearson")
+
+#write.csv(cors, "C:\\Users\\Michael\\Documents\\MSPA\\PREDICT 498 - Capstone\\Assignments\\cors.csv")
+
+#write.csv(cleandata, "C:\\Users\\Michael\\Documents\\MSPA\\PREDICT 498 - Capstone\\Assignments\\cleandata_roi.csv")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
